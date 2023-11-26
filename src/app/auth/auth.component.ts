@@ -11,14 +11,27 @@ import { CommonModule } from '@angular/common';
 export class AuthComponent implements OnInit {
   isSignInActive = false;
   isSignUpActive = false;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton?.addEventListener('click', () => {
+      container?.classList.add('right-panel-active');
+    });
+
+    signInButton?.addEventListener('click', () => {
+      container?.classList.remove('right-panel-active');
+    });
+  }
 
   onClickSignIn() {
-    this.isSignInActive = !this.isSignInActive;
+    this.isSignInActive = true;
+    this.isSignUpActive = false;
   }
-  
-  onClickSignUp(){
-    this.isSignUpActive = !this.isSignUpActive;
 
+  onClickSignUp() {
+    this.isSignInActive = false;
+    this.isSignUpActive = true;
   }
 }
