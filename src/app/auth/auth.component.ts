@@ -1,37 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss',
 })
 export class AuthComponent implements OnInit {
-  isSignInActive = false;
   isSignUpActive = false;
-  ngOnInit(): void {
-    const signUpButton = document.getElementById('signUp');
-    const signInButton = document.getElementById('signIn');
-    const container = document.getElementById('container');
 
-    signUpButton?.addEventListener('click', () => {
-      container?.classList.add('right-panel-active');
-    });
+  loginForm = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+  });
 
-    signInButton?.addEventListener('click', () => {
-      container?.classList.remove('right-panel-active');
-    });
-  }
+  ngOnInit(): void {}
 
   onClickSignIn() {
-    this.isSignInActive = true;
     this.isSignUpActive = false;
   }
 
   onClickSignUp() {
-    this.isSignInActive = false;
     this.isSignUpActive = true;
   }
+
+  onConfirmSignIn() {
+    console.log(this.loginForm);
+    
+  }
+
+  onConfirmSignUp() {}
 }
