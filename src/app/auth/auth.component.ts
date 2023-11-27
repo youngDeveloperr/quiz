@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
@@ -29,10 +30,14 @@ export class AuthComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
+  constructor(private router: Router) {}
+
   ngOnInit(): void {}
 
   onClickSignIn() {
     this.isSignUpActive = false;
+    this.signInForm.reset();
+   
   }
 
   onClickSignUp() {
@@ -42,6 +47,7 @@ export class AuthComponent implements OnInit {
 
   onConfirmSignIn() {
     console.log(this.loginForm.value);
+    this.router.navigate(['/listing']);
   }
 
   onConfirmSignUp() {
