@@ -5,31 +5,45 @@
     [ngClass]="{ 'right-panel-active': isSignUpActive }"
   >
     <div class="form-container sign-up-container">
-      <form action="#">
+      <form action="#" [formGroup]="signInForm">
         <h1>Create Account</h1>
-        <div class="social-container">
+        <!-- <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <span>or use your email for registration</span>
-        <input type="text" placeholder="Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <span>or use your email for registration</span> -->
+        <input type="text" placeholder="Username" formControlName="username" />
+        <input type="email" placeholder="Email" formControlName="email" />
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
         <button type="button" (click)="onConfirmSignUp()">Sign Up</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
-      <form action="#">
+      <form action="#" [formGroup]="loginForm">
         <h1>Sign in</h1>
-        <div class="social-container">
+        <!-- <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <span>or use your account</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <span>or use your account</span> -->
+        <input
+          type="email"
+          placeholder="Email"
+          name="email"
+          formControlName="email"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          name="password"
+          formControlName="password"
+        />
 
         <a href="#">Forgot your password?</a>
         <button type="button" (click)="onConfirmSignIn()">Sign In</button>
